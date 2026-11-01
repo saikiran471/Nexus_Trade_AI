@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Trade AI | Stock Scanner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://unpkg.com/lightweight-charts@4.2.3/dist/lightweight-charts.standalone.production.js"></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">N<span>✦</span></div><div><b>NEXUS</b><small>TRADE TERMINAL</small></div></div>
+      <div class="side-label">WORKSPACE</div>
+      <a class="nav-item active"><span>▦</span> Market scanner</a>
+      <a class="nav-item"><span>◈</span> Watchlist <em>SOON</em></a>
+      <a class="nav-item"><span>⌁</span> Portfolio <em>SOON</em></a>
+      <div class="sidebar-bottom"><div class="live-dot"></div><span>Scanner engine ready</span><div class="version">v1.0</div></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">MARKETS <span>/</span> STOCK SCANNER</div>
+        <div class="top-right"><div class="market-status"><i></i> DATA CONNECTION</div><div class="avatar">NT</div></div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> INTELLIGENCE FOR EVERY MOVE</div>
+          <h1>See the market<br><span>in a new light.</span></h1>
+          <p>Scan stocks. Discover setups. Explore every chart.<br>Your market workflow, in one focused terminal.</p>
+          <div class="hero-tags"><span>✦ NSE + BSE</span><span>◉ TECHNICAL SCAN</span><span>⌁ CANDLESTICK CHARTS</span></div>
+        </div>
+        <div class="hero-art">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-card">
+            <div class="art-card-head"><span>MARKET MOMENTUM</span><b>LIVE VIEW</b></div>
+            <div class="art-value">₹ <strong>24,850</strong><small>+1.42%</small></div>
+            <svg viewBox="0 0 340 105" class="spark" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#42e6bd" stop-opacity=".3"/><stop offset="1" stop-color="#42e6bd" stop-opacity="0"/></linearGradient></defs><path d="M0 82 C18 75 24 87 42 69 S72 76 88 56 S112 68 133 48 S155 57 173 35 S199 49 220 30 S248 43 266 20 S295 29 340 6 L340 105 L0 105Z" fill="url(#fill)"/><path d="M0 82 C18 75 24 87 42 69 S72 76 88 56 S112 68 133 48 S155 57 173 35 S199 49 220 30 S248 43 266 20 S295 29 340 6" fill="none" stroke="#42e6bd" stroke-width="2.5"/></svg>
+            <div class="art-foot"><span>MARKET PULSE</span><span>ILLUSTRATIVE VISUAL</span></div>
+          </div>
+          <div class="floating-chip chip-a">↗ Trend signals</div><div class="floating-chip chip-b">◉ Pattern watch</div>
+        </div>
+      </section>
+
+      <section class="search-panel panel">
+        <div class="section-heading"><div><div class="kicker">01 / STOCK UNIVERSE</div><h2>Build your scan</h2></div><div class="exchange-toggle"><button class="exchange active" data-exchange="NSE">NSE</button><button class="exchange" data-exchange="BSE">BSE</button></div></div>
+        <label class="input-label" for="symbols">ENTER STOCK SYMBOLS OR NAMES</label>
+        <div class="search-row"><div class="search-icon">⌕</div><input id="symbols" value="RELIANCE, TCS, INFY, HDFCBANK, ICICIBANK" placeholder="e.g. RELIANCE, TCS, INFY"><button id="scanBtn" class="primary-btn"><span>SCAN STOCKS</span><b>↗</b></button></div>
+        <div class="input-hint"><span>↳</span> Separate multiple stocks with commas. Try RELIANCE, TCS, INFY, SBIN.</div>
+      </section>
+
+      <section class="preferences panel">
+        <div class="section-heading compact"><div><div class="kicker">02 / SCAN PARAMETERS</div><h2>Choose your preferences</h2></div><span class="muted-note">Filter the results by setup</span></div>
+        <div class="preference-grid">
+          <label class="pref"><input type="checkbox" data-pref="bullish"><span class="pref-icon green">↗</span><span><b>Bullish setups</b><small>Positive move + uptrend</small></span></label>
+          <label class="pref"><input type="checkbox" data-pref="bearish"><span class="pref-icon red">↘</span><span><b>Bearish setups</b><small>Negative move + downtrend</small></span></label>
+          <label class="pref"><input type="checkbox" data-pref="breakout"><span class="pref-icon purple">⌁</span><span><b>Momentum moves</b><small>Daily change above 1%</small></span></label>
+          <label class="pref"><input type="checkbox" data-pref="high_volume"><span class="pref-icon blue">▥</span><span><b>High volume</b><small>Above 1.5× average volume</small></span></label>
+          <label class="pref"><input type="checkbox" data-pref="oversold"><span class="pref-icon orange">◉</span><span><b>RSI oversold</b><small>Relative strength below 30</small></span></label>
+          <label class="pref"><input type="checkbox" data-pref="overbought"><span class="pref-icon pink">◎</span><span><b>RSI overbought</b><small>Relative strength above 70</small></span></label>
+        </div>
+        <div class="pref-foot"><span>Choose any combination. Leave all off to see every result.</span><button id="clearPrefs" class="text-btn">Clear filters ↺</button></div>
+      </section>
+
+      <section class="results-section">
+        <div class="results-heading"><div><div class="kicker">03 / SCAN OUTPUT</div><h2>Stocks in focus <span id="resultCount" class="count-pill">0</span></h2></div><div id="updated" class="updated">WAITING FOR FIRST SCAN</div></div>
+        <div id="message" class="message">Enter your stocks and select <b>SCAN STOCKS</b> to begin.</div>
+        <div id="results" class="results-grid"></div>
+        <div id="errors" class="errors"></div>
+      </section>
+      <footer><span>NEXUS TRADE TERMINAL</span><span>Market data may be delayed. For research and education, not investment advice.</span></footer>
+    </main>
+  </div>
+
+  <div id="chartModal" class="modal hidden">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="chart-window">
+      <div class="chart-top"><div><div class="kicker">ASSET CHART / <span id="chartExchange">NSE</span></div><h2 id="chartTitle">RELIANCE</h2></div><button id="closeChart" class="close-btn">×</button></div>
+      <div class="chart-controls"><div class="timeframes"><button class="tf active" data-interval="1d">1D</button><button class="tf" data-interval="1wk">1W</button><button class="tf" data-interval="1mo">1M</button></div><span id="chartNotice">Candlestick price history</span></div>
+      <div id="chartContainer"></div><div id="chartError" class="chart-error"></div>
+      <div class="chart-legend"><span><i class="legend-green"></i> Bullish candle</span><span><i class="legend-red"></i> Bearish candle</span><span>Historical data · Volume shown below</span></div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
